@@ -1,0 +1,4 @@
+l1 = [1, 2, 3, 4]
+l2 = [3, 4, 5, 6]
+common = set(l1) & set(l2)
+print(common)
