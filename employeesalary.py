@@ -1,10 +1,20 @@
 class Employee:
-    def __init__(self, name, salary):
-        self.name = name
-        self.salary = salary
+    def salary(self):
+        pass
 
-    def yearly_salary(self):
-        return self.salary * 12
+class FullTime(Employee):
+    def salary(self):
+        print("Full Time Salary = 30000")
 
-e = Employee("Charles", 80000)
-print("Yearly Salary:", e.yearly_salary())
+class PartTime(Employee):
+    def salary(self):
+        print("Part Time Salary = 15000")
+
+class Intern(Employee):
+    def salary(self):
+        print("Intern Salary = 8000")
+
+employees = [FullTime(), PartTime(), Intern()]
+
+for e in employees:
+    e.salary()
