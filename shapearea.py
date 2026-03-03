@@ -1,19 +1,17 @@
-class Circle:
+from abc import ABC, abstractmethod
+
+class Shape(ABC):
+
     def area(self):
-        r = 3
-        print("Circle:", 3.14 * r * r)
+        pass
 
-class Rectangle:
+class Square(Shape):
+
+    def __init__(self, side):
+        self.side = side
+
     def area(self):
-        l, b = 4, 5
-        print("Rectangle:", l * b)
+        return self.side * self.side
 
-class Triangle:
-    def area(self):
-        b, h = 6, 2
-        print("Triangle:", 0.5 * b * h)
-
-shapes = [Circle(), Rectangle(), Triangle()]
-
-for s in shapes:
-    s.area()
+s = Square(5)
+print("Area:", s.area())

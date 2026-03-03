@@ -1,20 +1,30 @@
-class Employee:
-    def salary(self):
+from abc import ABC, abstractmethod
+
+class Employee(ABC):
+
+    def calculate_salary(self):
         pass
 
-class FullTime(Employee):
-    def salary(self):
-        print("Full Time Salary = 30000")
+class FullTimeEmployee(Employee):
 
-class PartTime(Employee):
-    def salary(self):
-        print("Part Time Salary = 15000")
+    def __init__(self, monthly_salary):
+        self.monthly_salary = monthly_salary
 
-class Intern(Employee):
-    def salary(self):
-        print("Intern Salary = 8000")
+    def calculate_salary(self):
+        return self.monthly_salary
 
-employees = [FullTime(), PartTime(), Intern()]
+class PartTimeEmployee(Employee):
 
-for e in employees:
-    e.salary()
+    def __init__(self, hours, rate):
+        self.hours = hours
+        self.rate = rate
+
+    def calculate_salary(self):
+        return self.hours * self.rate
+
+
+f = FullTimeEmployee(60000)
+p = PartTimeEmployee(30, 600)
+
+print("Full Time Salary:", f.calculate_salary())
+print("Part Time Salary:", p.calculate_salary())

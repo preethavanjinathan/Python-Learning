@@ -1,14 +1,30 @@
-class BankAccount:
+from abc import ABC, abstractmethod
+
+class BankAccount(ABC):
+
     def __init__(self, balance):
         self.balance = balance
 
-    def deposit(self, amount):
-        self.balance += amount
+    def calculate_interest(self):
+        pass
 
-    def withdraw(self, amount):
-        self.balance -= amount
+class SavingsAccount(BankAccount):
 
-acc = BankAccount(5000)
-acc.deposit(1500)
-acc.withdraw(500)
-print("Balance:", acc.balance)
+    def calculate_interest(self):
+        return self.balance * 0.05
+
+class CurrentAccount(BankAccount):
+
+    def calculate_interest(self):
+        return 0
+
+s = SavingsAccount(10000)
+c = CurrentAccount(10000)
+
+print("Savings Interest:", s.calculate_interest())
+print("Current Interest:", s.calculate_interest())
+
+
+
+
+
