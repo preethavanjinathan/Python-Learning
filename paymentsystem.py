@@ -1,20 +1,30 @@
-class Payment:
+from abc import ABC, abstractmethod
+
+class Payment(ABC):
+
     def pay(self, amount):
         pass
 
-class CreditCard(Payment):
+class CreditCardPayment(Payment):
+
     def pay(self, amount):
         print(f"Paid {amount} using Credit Card")
 
-class UPI(Payment):
+class UPIPayment(Payment):
+
     def pay(self, amount):
         print(f"Paid {amount} using UPI")
 
-class Cash(Payment):
-    def pay(self, amount):
-        print(f"Paid {amount} using Cash")
+class CashPayment(Payment):
 
-payments = [CreditCard(), UPI(), Cash()]
+    def pay(self, amount):
+        print(f"Paid {amount} in Cash")
+
+
+payments = [CreditCardPayment(),
+            UPIPayment(),
+            CashPayment()
+]
 
 for p in payments:
     p.pay(1000)
